@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html ng-app ='ngMobileSpeedOne' ng-cloak>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>mSite Speed One sheeter</title>
+
+        <link rel="icon"
+              type="image/x-icon"
+              href="favicon.ico">
+
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+        <!--Bootstrap -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Angular Material CSS  -->
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
+        <!--Importing Google Web font - Droid Sans -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans">
+
+        <!-- Application CSS -->
+        <!-- <link href="css/nomalize.css" rel="stylesheet">  -->
+        <link href="css/main.css" rel="stylesheet">
+
+        <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queires -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file://' -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxdn.com/libs/repond.js/1.4.2/repond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar h3 {
+                font-size: 22px;
+                font-weight:bold;
+                color: #666666;
+            }
+        </style>
+    </head>
+
+    <body ng-controller="ngInputCtrl">
+    <!-- Google Tag Manger starts <Google Analytics Tag> >-->
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K698HM"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K698HM');</script>
+    <!-- End Google Tag Manager -->
+
+    <!--megadash pixel for tracking starts -->
+    <img src="https://megadash.googleplex.com/tracking/5991571483000832" alt="Megadash Usage Tracking Pixel, see https://goto/megadash-tracking" height="1" width="1" />
+    <!--megadash pixel for tracking ends -->
+
+    <!-- Google Tag Manager Ends-->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-scroll">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" align="left" >
+                        <img src="assets/img/png/gtech-logo-horizontal.png" alt="gTechLogo" width="80px">
+                    </a>
+                </div>
+                <div  style="float: left; width: 80%;">
+                    <a href="https://x20web.corp.google.com/~mincheoulkim/mSpeedOneDemo/welcome.html" style="text-decoration: none;"><h3 align="center">{{appTitle}}</h3></a>
+                </div>
+                <div class="nav navbar-nav" style="float: left;width: 10%;margin-top: 30px;">
+                    <a href="https://docs.google.com/a/google.com/forms/d/e/1FAIpQLScV9PRKS3NR5_CBeuTYnzWBYXvx3Qli45SlvD-QYUkbDgj5yA/viewform" style="text-decoration:none; color: #838384;" target="_blank">Feedback</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <br><br>
+            <form class="form-horizontal" action="index.html" method="GET" ng-submit="setUserInput()">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Market</label>
+                    <div class="col-lg-10" ng-cloak>
+                        <select name="accountMarket"
+                                class="form-control"
+                                ng-model="selectedMarket"
+                                ng-options="market.country for market in jsonMarketList"
+                                ng-required="true"
+                                ng-change="getMarkets()"
+                                ng-disabled="jsonMarketList.length === 0">
+                                <option value="" >{{jsonMarketList.length === 0 ? 'Wait till market list is ready': 'Select market from the list'}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Advertiser Name</label>
+
+                    <div class="col-lg-10" ng-cloak>
+                        <select name="accountName"
+                                class="form-control"
+                                ng-model="selectedAdvertiser"
+                                ng-options="advertiser.advertiser_name for advertiser in jsonAdvertiserList"
+                                ng-required="true"
+                                ng-disabled="jsonAdvertiserList.length === 0" >
+                            <option value="">{{jsonAdvertiserList.length === 0 ? 'Wait till advertiser list is ready': 'Select Advertiser from the list'}}</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Mobile Site URL</label>
+                    <div class="col-lg-10">
+                        <input type="url"
+                               name="accountURL"
+                               class="form-control"
+                               ng-model="selectedAccountURL"
+                               placeholder="Write down your account mobile website URL including http:// or https://"
+                               ng-required="true">
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="col-xs-offset-2 col-xs-10 col-lg-offset-2 col-lg-10">
+                    <label>{{ErrMsg}}</label>
+                </div>
+                <hr>
+
+                <br>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10 col-lg-offset-2 col-lg-10">
+                        <button type="submit" class="btn btn-primary"> Submit</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's Javascript plugins') -->
+        <!-- It is from Google Hosted Libraries https://developers.google.com/speed/libraries/ -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+        <!--BootStrap JS -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- AngularJS  -->
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+
+        <!--Angular Material Library -->
+        <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+
+        <!--Aplos -->
+        <!-- <script src="//data.corp.google.com/aplos/versions/aplos-current.js"></script>  -->
+        <script type="text/javascript" src="https://data.corp.google.com/aplos/versions/aplos-v1_2.js"></script>
+        <script src='https://login.corp.google.com/javascript_api.js'></script>
+
+        <!-- Application Javascript -->
+
+        <script type="text/javascript" src="js/service/localize.js"></script>  <!-- Localization -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/service/constVariables.js"></script>
+        <script type="text/javascript" src="js/service/constResource.js"></script>
+        <script type="text/javascript" src="js/service/dataService.js"></script>
+        <script type="text/javascript" src="js/controller/InputCtrl.js"></script>
+
+    </body>
+</html>

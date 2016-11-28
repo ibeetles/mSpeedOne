@@ -1,0 +1,433 @@
+@charset "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+
+    width: 1220px;
+    /*margin-left: 8px;*/
+
+    /*Make the body content in the middle of the web browser*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progressctrl p {
+    padding-bottom: 0px;
+    padding-top:0px;
+    margin-bottom: 0px;
+    margin-top:0px;
+}
+
+/*#mycontainer {display: none;}*/
+
+.mspeed-title-section {
+    width:100%;
+    height: 313px;
+
+    /*background-color:#B7B7B7; */
+    background-color: #4555A5; /*gTech color scheme*/
+    margin-top: 8px;
+}
+
+.mspeed-head-logo {
+    float: left;
+    width:20%;
+    height:313px;
+}
+
+.mspeed-head-body {
+    float: left;
+    width:64%;
+    height: 313px;;
+}
+
+.mspeed-head-title {
+    height:40%;
+}
+.mspeed-head-subtitle {
+    height:60%;
+}
+.mspeed-head-company-logo {
+    float: left;
+    width:16%;
+    height:313px;
+}
+
+.mspeed-head-logo img {
+    margin-top: 23px;
+}
+
+.mspeed-title-section h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+
+}
+.mspeed-head-title h1 {
+    /*color:#666666;*/
+    color: #FFFFFF; /*gTech Color scheme*/
+    padding-top: 45px;
+}
+
+.mspeed-head-subtitle {
+    color:#FFFFFF;
+    padding-top: -8px;
+}
+
+.mspeed-head-company-logo img {
+    padding-top: 230px;
+}
+
+/*First Section Separator*/
+.mspeed-separator-section {
+    width:100%;
+    height: 71px;
+    /*background-color:#666666;*/
+    background-color:#838384;
+}
+
+.mspeed-separator-section-index {
+    width:100%;
+    height: 71px;
+    /*background-color:#666666;*/
+    background-color:#7BB241;
+}
+
+.mspeed-separator-section-competitor {
+    width:100%;
+    height: 71px;
+    /*background-color:#666666;*/
+    background-color:#FF9900;
+}
+.mspeed-separator-section-suggestion {
+    width:100%;
+    height: 71px;
+    /*background-color:#666666;*/
+    background-color:#EA4335;
+}
+
+
+.mspeed-separator-section-icon-01 {
+    float: left;
+    width:25%;
+}
+
+.mspeed-separator-section-icon-01 img {
+    float: right;
+    width: 60px;
+}
+
+.mspeed-separator-section-title-01 {
+    float:left;
+    width:100%;
+}
+
+.mspeed-separator-section-title-01 h1{
+    margin-top: 14px;
+
+    text-align: center;
+
+    padding-left:20px;
+
+    color:#FFFFFF;
+    font-size: 39px;
+    font-weight: bold;
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+}
+
+/*Second Section Separator*/
+.mspeed-separator-section-icon-02 {
+    float: left;
+    width:20%;
+}
+
+.mspeed-separator-section-icon-02 img {
+    float: right;
+    width: 60px;
+}
+
+.mspeed-separator-section-title-02 {
+    float: left;
+    width:100%;
+}
+
+.mspeed-separator-section-title-02 h1{
+    margin-top: 14px;
+
+    text-align: center;
+
+    padding-left:20px;
+
+    color:#FFFFFF;
+    font-size: 39px;
+    font-weight: bold;
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+}
+
+/*Third Section Separator*/
+.mspeed-separator-section-icon-03 {
+    float: left;
+    width:35%;
+}
+
+.mspeed-separator-section-icon-03 img {
+    float: right;
+    width: 60px;
+}
+
+.mspeed-separator-section-title-03 {
+    float: left;
+    width:100%;
+}
+
+.mspeed-separator-section-title-03 h1{
+    margin-top: 14px;
+
+    text-align: center;
+
+    padding-left:20px;
+
+    color:#FFFFFF;
+    font-size: 39px;
+    font-weight: bold;
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+}
+
+/*Footer Section Separator*/
+.mspeed-footer-section {
+    width:100%;
+    height: 130px;
+    /*background-color:#666666;*/
+    background-color:#4555A5; /*gTech Color scheme*/
+    margin-bottom: -8px;
+}
+
+.mspeed-footer-section-icon {
+    float: left;
+    width:10%;
+
+    padding-left: 25px;
+    padding-top: 70px;
+}
+
+.mspeed-footer-section-icon img {
+    float: left;
+    /*width: 116px;*/
+    width: 90px;
+}
+
+.mspeed-footer-section-title {
+    float: left;
+    width:90%;
+}
+
+.mspeed-footer-section-title h1{
+    margin-top: 14px;
+
+    text-align: center;
+
+    padding-left:0px;
+    padding-top: 35px;
+
+    color:#FFFFFF;
+    font-size: 39px;
+    font-weight: bold;
+    /*font-family: Arial, sans-serif;*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+}
+
+/* Speed Index section */
+.mspeed-hero-comparison-section {
+    height:280px;
+    width:100%;
+    /*background-color: #6FA8DC;*/
+    background-color:#F8F8F8; /*checked*/
+}
+
+.mspeed-hero-comparison-section-logo {
+    float: left;
+    width: 20%;
+    height: 280px;
+
+    /* border: solid;
+     border-color: #E69138;*/
+}
+
+.mspeed-hero-comparison-section-logo img{
+    width: 100%;
+    padding-top: 25px;
+    padding-left: 25px;
+
+    /*border: solid;*/
+}
+
+.mspeed-hero-comparison-section-content {
+    float: left;
+    width: 80%;
+    height: 280px;
+
+    /*border: solid;
+    border-color: #872232;*/
+}
+
+.mspeed-hero-comparison-section-content-box {
+    float: left;
+    height: 280px;
+    width: 25%;
+
+    /*border: solid;
+    border-color: #0000FF;*/
+}
+
+/*Dremel Stats section */
+
+/* Stats Comparison section */
+.mspeed-dremel-comparison-section {
+    height:280px;
+    width:100%;
+    /*background-color: #E69138;*/
+    background-color:#F8F8F8; /*checked    */
+}
+
+.mspeed-dremel-comparison-section-logo {
+    float: left;
+    width: 22%;
+    height: 280px;
+    /*        border: solid;*/
+}
+
+.mspeed-dremel-comparison-section-logo img{
+    width: 260px;
+    padding-top: 20px;
+    padding-left: 15px;
+
+    /*border:solid;*/
+}
+
+.mspeed-dremel-comparison-section-content {
+    float: left;
+    height: 280px;
+    width:78%;
+    /*border:solid;*/
+}
+
+.mspeed-dremel-comparison-section-content-box {
+    float: left;
+    width:20%;
+    height:280px;
+
+    /*border:solid;*/
+}
+
+/* PageSpeed Insight section */
+.mspeed-speedinsight-comparison-section {
+    height:380px;
+    width:100%;
+    /*background-color: #6FA8DC; */
+    background-color:#F8F8F8; /*checked*/
+}
+
+.mspeed-speedinsight-comparison-section-head {
+    height:40%;
+    padding-top: 15px;
+}
+
+.mspeed-speedinsight-comparison-section-body {
+    height:48%;
+}
+
+/* to make all hyperlink as white color */
+.mspeed-speedinsight-comparison-section-body a {
+    color: #838384;
+}
+
+.mspeed-speedinsight-comparison-section-legend {
+    height:12%;
+}
+
+.mspeed-speedinsight-comparison-section-head-detail {
+    float: left;
+    width: 33.333%;
+    height: 152px;
+}
+
+.mspeed-speedinsight-comparison-section-body-detail {
+    float: left;
+    width: 33.333%;
+    height: 182px;
+}
+.mspeed-speedinsight-comparison-section-head-detail p {
+    /*font-family: "Trebuchet MS"; */
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+
+    font-size: 20px;
+    font-weight: bold;
+    /*color: #1155CC;*/
+    color: #4555A5; /* gTech Color Scheme */
+    margin-top: 5px;
+}
+
+.mspeed-speedinsight-comparison-section-body-detail  td {
+    font-size:17px;
+    /*font-family: "Arial";*/
+    font-family: 'Roboto Condensed', 'Noto Sans Japanese' ;
+}
+
+.impression td {
+    height: 50px;
+}
+
+.serverHit td {
+    height: 35px;
+}
+
+.contentDelivery td {
+    height: 35px;
+}
+
+.impression {
+    margin-top: 0px;
+}
+
+.serverHit {
+    margin-top: 0px;
+    margin-left:50px;
+}
+
+.contentDelivery {
+    margin-top: 0px;
+    margin-left: 60px;
+}
+
+.legendtable {
+    margin-left: 27px;
+}
+
+.legendtable td {
+    color:black;
+    padding-left: 5px;
+    font-size: 13px;
+}
+
+/* style only for chart*/
+.bar {
+    fill: steelblue;
+}
+
+.x.axis path {
+    display: none;
+}

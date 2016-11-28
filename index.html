@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html ng-app ='ngMobileSpeedOne' ng-cloak>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>mSite Speed Onepager</title>
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+        <!--Bootstrap -->
+        <!-- <link href="css/nomalize.css" rel="stylesheet">  -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!--Angular Material CSS  -->
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
+        <!--Importing Google Web font - Droid Sans -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans">
+
+        <!--Importing Google Web font - Roboto Condensed -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
+
+        <!-- Importing Google Web font for Japanese -Noto Sans Japanese -->
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+
+        <!-- Application CSS -->
+
+        <link href="css/main.css" rel="stylesheet">
+
+        <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queires -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file://' -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxdn.com/libs/repond.js/1.4.2/repond.min.js"></script>
+        <![endif]-->
+        <style>
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar h3 {
+                font-size: 22px;
+                font-weight:bold;
+                color: #666666;
+            }
+        </style>
+
+    </head>
+    <body ng-controller="ngPublishGraphCtrl" ng-init="init()">
+    <!-- Google Tag Manger starts <Google Analytics Tag> >-->
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-K698HM"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K698HM');</script>
+    <!-- End Google Tag Manager -->
+
+    <!--megadash pixel for tracking starts -->
+    <img src="https://megadash.googleplex.com/tracking/5991571483000832" alt="Megadash Usage Tracking Pixel, see https://goto/megadash-tracking" height="1" width="1" />
+    <!--megadash pixel for tracking ends -->
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-scroll">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" align="left" >
+                        <img src="assets/img/png/gtech-logo-horizontal.png" alt="gTechLogo" width="80px">
+                    </a>
+                </div>
+                <div  style="float: left; width: 80%;">
+                    <a href="https://x20web.corp.google.com/~mincheoulkim/mSpeedOneDemo/welcome.html" style="text-decoration: none;"><h3 align="center">{{appTitle}}</h3></a>
+                </div>
+                <div class="nav navbar-nav" style="float: left;width: 10%;margin-top: 30px;">
+                    <a href="https://docs.google.com/a/google.com/forms/d/e/1FAIpQLScV9PRKS3NR5_CBeuTYnzWBYXvx3Qli45SlvD-QYUkbDgj5yA/viewform" style="text-decoration:none; color: #838384;" target="_blank">Feedback</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--Showing progress     -->
+        <div class="progressctrl" layout="column" layout-margin style="padding:25px; font-family: 'Droid Sans'" ng-cloak>
+            <h4 >{{progressSectionTitle}}</h4> <br>
+            <p>{{progressSectionSubTitle}}</p> <br>
+            <p>{{progressSectionDescription}}</p>
+            <p>{{progressSectionContact}}</p>
+
+            <br>
+
+            <p> <b>{{progressMessageUserInput}}</b> </p>
+            <p> <b>{{progressMessageWPTAPI}}</b> </p>
+            <p> <b>{{progressMessageWPT}}</b> </p>
+            <p> <b>{{progressMessageAPI}} </b></p> <br>
+
+            <md-progress-linear md-mode="indeterminate" class="progressbarctrl"></md-progress-linear>
+            <h4 class="md-title" style="color: red"> {{progressMessageSuggestionHeader}} </h4>
+            <ul style="list-style-type: none;">
+                <li><p> {{progressMessageSuggestionUserInput}} </p></li>
+                <li><p> {{progressMessageSuggestionWPT}} </p></li>
+                <li><p> {{progressMessageSuggestionAPI}} </p></li>
+            </ul>
+
+            <p> {{progressMessageSuggestionContact}} </p><br>
+
+            <div class="progressbutton" style="display:none;">
+                <div>
+                    <button class="btn btn-primary" onClick="history.go(-1);return true;">Back</button>
+                    <button class="btn btn-warning" onclick="location.reload(false);">Retry </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="convertBtn" style="display:none;" >
+            <button class="btn btn-primary" ng-click="convertToPdf()">Convert to PDF</button>
+        </div>
+        <!-- Real body contents start hear -->
+        <div class="bodyctrl" id="bodyctrlid" style="display:none;">
+
+            <!-- dummy tag to initiate 'localize' moduel -->
+            <h2 ng-bind="'SECTION_1_EN' | i18n"></h2>
+
+            <!-- Report Header -->
+            <div class="mspeed-title-section">
+                <div class="mspeed-head-logo">
+                    <img src="assets/img/png/smartphone.png" width="284px">
+                </div>
+                <div class="mspeed-head-body">
+                    <div class="mspeed-head-title">
+                        <!-- <h1>{{headerPageTitleRe}}</h1> -->
+                        <h1>{{'HEADER_PAGE_TITLE_EN'|i18n}}</h1>
+                    </div>
+                    <div class="mspeed-head-subtitle">
+                        <h1>{{headerReportTitleRe}}</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!--Report Section Seperator -->
+            <div class="mspeed-separator-section-index">
+                <div class="mspeed-separator-section-icon-01">
+                    <!-- <img src="assets/img/png/smartphone-7.png"> checked-->
+                </div>
+                <div class="mspeed-separator-section-title-01">
+                    <!-- <h1>{{section1TitleRe}}</h1> -->
+                    <h1>{{'SECTION_1_EN'|i18n}}</h1>
+                </div>
+            </div>
+
+            <!--Speed Index Comparison section  -->
+            <div class="mspeed-hero-comparison-section">
+                <div class="mspeed-hero-comparison-section-logo">
+                    <img src="assets/img/png/alarm-clock.png">
+                </div>
+                <div class="mspeed-hero-comparison-section-content">
+                    <div class="mspeed-hero-comparison-section-content-box">
+                        <svg height="280">
+                            <rect x="48" y="50" width="210" height="170" fill="#FFFFFF" stroke="#757575" stroke-width="2" rx="20" ry="20"></rect>
+                            <text x="67" y="92" font-family="Trebuchet MS" font-size="14px" font-weight="bold" style="fill:#434343">{{S1MobileSpeedIndexRe}}</text>
+                            <!-- <text x="67" y="92" font-family="Trebuchet MS" font-size="14px" font-weight="bold" style="fill:#434343">{{'S1_MOBILE_SPEED_INDEX_EN'|i18n}}</text> -->
+                            <text id="mSpeedIndex" x="82" y="150" font-family="Arial" font-size="45px" font-weight="bold" style="fill:{{pageSpeedIndexColor}}">{{pageSpeedIndexValue}}</text>
+                            <text x="137" y="150" font-family="Arial" font-size="45px" font-weight="bold" style="fill:#B7B7B7">/100</text>
+                            <!-- <text id="mSpeedIndexSuggestion" x="127" y="185" font-family="Trebuchet MS" font-size="16px" font-weight="bold" style="fill:{{pageSpeedIndexColor}}">{{pageSpeedIndexJudgeText}}</text>  -->
+                            <text id="mSpeedIndexSuggestion" x="{{pageSpeedIndexJudgeTextPos}}" y="185" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:{{pageSpeedIndexColor}}">{{pageSpeedIndexJudgeText}}</text>
+                        </svg>
+                    </div>
+                    <div class="mspeed-hero-comparison-section-content-box">
+                        <svg  height="280">
+                            <rect x="32" y="50" width="210" height="170" fill="#FFFFFF" stroke="#757575" stroke-width="2" rx="20" ry="20"></rect>
+                            <text x="70" y="92" font-family="Trebuchet MS" font-size="16px" font-weight="bold" style="fill:#434343">{{S1WptSpeedIndexRe}}</text>
+                             <!-- <text x="70" y="92" font-family="Trebuchet MS" font-size="16px" font-weight="bold" style="fill:#434343">{{'S1_WPT_SPEED_INDEX_EN'|i18n}}</text> -->
+                            <text id="WPTSpeedIndex" x="{{WPTIndexPos}}" y="150" font-family="Arial" font-size="45px" font-weight="bold" style="fill:{{WPTIndexColor}}">{{WPTIndex}}</text>
+                            <text id="WPTSpeedIndexSuggestion" x="{{WPTIndexJudgeTextPos}}" y="185" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:{{WPTIndexColor}}">{{WPTIndexJudgeText}}</text>
+                        </svg>
+                    </div>
+                    <div class="mspeed-hero-comparison-section-content-box">
+                        <svg  height="280">
+                            <rect x="15" y="50" width="210" height="170" fill="#FFFFFF" stroke="#757575" stroke-width="2" rx="20" ry="20"></rect>
+                            <!-- <text x="54" y="82" font-family="Trebuchet MS" font-size="14px" font-weight="bold" style="fill:#434343">{{S1VisuallyCompleteRe}}</text> -->
+                            <!-- <text x="79" y="102" font-family="Trebuchet MS" font-size="14px" font-weight="bold" style="fill:#434343">{{S1LoadTimeRe}}</text> -->
+                            <text x="{{WPTVisuallyCompleteTitleTextPos}}" y="92" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:#434343">{{'S1_VISUALLY_COMPLETE_TIME_EN'|i18n}}</text>
+                            <text id="PageLoadingTime" x="{{WPTVisuallyCompleteTimeTextPos}}" y="150" font-family="Arial" font-size="45px" font-weight="bold" style="fill:{{WPTVisuallyCompleteTimeColor}}">{{WPTVisuallyCompleteTimeText}}</text>
+                            <text id="PageLoadingTimeSuggestion" x="{{WPTVisuallyCompleteTimeJudgeTextPos}}" y="185" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:{{WPTVisuallyCompleteTimeColor}}">{{WPTVisuallyCompleteTimeJudgeText}}</text>
+                        </svg>
+                    </div>
+                    <div class="mspeed-hero-comparison-section-content-box">
+                        <svg  height="280">
+                            <rect x="0" y="50" width="210" height="170" fill="#FFFFFF" stroke="#757575" stroke-width="2" rx="20" ry="20"></rect>
+                            <!-- <text x="26" y="92" font-family="Trebuchet MS" font-size="16px" font-weight="bold" style="fill:#434343">{{S1FullyLoadedTimeRe}}</text> -->
+                            <text x="26" y="92" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:#434343">{{'S1_FULLY_LOADED_TIME_EN'|i18n}}</text>
+                            <text id="PageCompleteTime" x="{{WPTFullyLoadedTimeTextPos}}" y="150" font-family="Arial" font-size="45px" font-weight="bold" style="fill:{{WPTFullyLoadedTimeColor}}">{{WPTFullyLoadedTimeText}}</text>
+                            <text id="PageCompleteTimeSuggestion" x="{{WPTFullyLoadedTimeJudgeTextPos}}" y="185" font-family="Trebuchet MS,Noto Sans Japanese" font-size="16px" font-weight="bold" style="fill:{{WPTFullyLoadedTimeColor}}">{{WPTFullyLoadedTimeJudgeText}}</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!--Report Section Seperator -->
+            <div class="mspeed-separator-section-competitor">
+                <div class="mspeed-separator-section-icon-02">
+                    <!-- <img src="assets/img/png/mortarboard.png"> checked-->
+                </div>
+                <div class="mspeed-separator-section-title-02">
+                    <!-- <h1>{{section2TitleRe}}</h1> -->
+                    <h1>{{'SECTION_2_EN'|i18n}}</h1>
+                </div>
+            </div>
+
+            <!--Stats Comparison Section (Dremel section)  -->
+            <div class="mspeed-dremel-comparison-section">
+                <div class="mspeed-dremel-comparison-section-logo">
+                   <img src="assets/img/png/abacus.png">
+                </div>
+                <div class="mspeed-dremel-comparison-section-content">
+                    <div id="mspeed-WPT-Chart">
+                    </div>
+                </div>
+            </div>
+
+            <!--Report Section Seperator -->
+            <div class="mspeed-separator-section-suggestion">
+                <div class="mspeed-separator-section-icon-03">
+                    <!-- <img src="assets/img/png/turtle.png">  checked-->
+                </div>
+                <div class="mspeed-separator-section-title-03">
+                    <!-- <h1>{{section3TitleRe}}</h1> -->
+                    <h1>{{'SECTION_3_EN'|i18n}}</h1>
+                </div>
+            </div>
+
+            <!--PageSpeed Insights data section -->
+            <div class="mspeed-speedinsight-comparison-section">
+                <div class="mspeed-speedinsight-comparison-section-head">
+                    <div class="mspeed-speedinsight-comparison-section-head-detail" align="center">
+                        <img src="assets/img/png/form.png" width="95px">
+                        <!-- <p>{{S3FirstImpressMatterRe}}</p> -->
+                        <p>{{'S3_FIRST_IMPRESS_MATTER_EN'|i18n}}</p>
+                    </div>
+                    <div class="mspeed-speedinsight-comparison-section-head-detail" align="center">
+                        <img src="assets/img/png/server-1.png" width="95px">
+                        <!-- <p>{{S3LimitServerHitsRe}}</p>  -->
+                        <p>{{'S3_LIMIT_SERVER_HITS_EN'|i18n}}</p>
+                    </div>
+                    <div class="mspeed-speedinsight-comparison-section-head-detail" align="center">
+                        <img src="assets/img/png/paint-palette.png" width="95px">
+                        <!-- <p>{{S3OptContentDeliveryRe}}</p>  -->
+                        <p>{{'S3_OPT_CONTENT_DELIVERY_EN'|i18n}}</p>
+                    </div>
+                </div>
+                <div class="mspeed-speedinsight-comparison-section-body">
+                    <div class="mspeed-speedinsight-comparison-section-body-detail">
+                        <table class="impression">
+                            <tr>
+                                <td width="80px" align="center"><img id="prioritizecontent" src="{{S3P1PrioritizeContentIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P1PrioritizeContentLink}}">{{S3P1PrioritizeContentRe}}</a></td>  -->
+                                <td><a href="{{S3P1PrioritizeContentLink}}">{{'S3_P1_ATF_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="removerenderingblockjscss" src="{{S3P1RenderBlockingIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P1RenderBlockingLink}}">{{S3P1RenderBlockingRe}}</a></td> -->
+                                <td><a href="{{S3P1RenderBlockingLink}}">{{'S3_P1_RENDER_BLOCKING_EN'|i18n}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mspeed-speedinsight-comparison-section-body-detail">
+                        <table class="serverHit">
+                            <tr>
+                                <td width="80px" align="center"><img id="browsercaching" src="{{S3P2BrowserCachingIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P2BrowserCachingLink}}">{{S3P2BrowserCachingRe}}</a></td>  -->
+                                <td><a href="{{S3P2BrowserCachingLink}}">{{'S3_P2_BROWSER_CACHING_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="avoidredirects" src="{{S3P2RedirectsIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P2Redirectslink}}">{{S3P2RedirectsRe}}</a></td>  -->
+                                <td><a href="{{S3P2Redirectslink}}">{{'S3_P2_REDIRECTS_EN'|i18n}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mspeed-speedinsight-comparison-section-body-detail">
+                        <table class="contentDelivery">
+                            <tr>
+                                <td width="80px" align="center"><img id="optimizeimages" src="{{S3P2ImageOptIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P2ImageOptLink}}">{{S3P2ImageOptRe}}</a></td>  -->
+                                <td><a href="{{S3P2ImageOptLink}}">{{'S3_P2_IMAGE_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="enablecompression" src="{{S3P3EnableCompressionIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P3EnableCompressionLink}}">{{S3P3EnableCompressionRe}}</a></td>  -->
+                                <td><a href="{{S3P3EnableCompressionLink}}">{{'S3_P3_ENABLE_COMPRESSION_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="reduceservertime" src="{{S3P2ServerTimeIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P2ServerTimeLink}}">{{S3P2ServerTimeRe}}</a></td>  -->
+                                <td><a href="{{S3P2ServerTimeLink}}">{{'S3_P2_SERVER_RESPONSE_TIME_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="minifyjs" src="{{S3P3MinJSIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P3MinJSLink}}">{{S3P3MinJSRe}}</a></td>  -->
+                                <td><a href="{{S3P3MinJSLink}}">{{'S3_P3_MIN_JS_EN'|i18n}}</a></td>
+                            </tr>
+                            <tr>
+                                <td width="80px" align="center"><img id="minifycss" src="{{S3P3MinCSSIcon}}" width="23"></td>
+                                <!-- <td><a href="{{S3P3MinCSSLink}}">{{S3P3MinCSSRe}}</a></td> -->
+                                <td><a href="{{S3P3MinCSSLink}}">{{'S3_P3_MIN_CSS_EN'|i18n}}</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="mspeed-speedinsight-comparison-section-legend">
+                    <table class="legendtable">
+                        <tr>
+                            <td><img src="{{PASSED_ICON}}" width="15"></td>
+                            <!-- <td><i>{{legendPassedRe}}</i></td>  -->
+                            <td><i>{{'LEGEND_PASSED_EN'|i18n}}</i></td>
+                            <td><img src="{{CONSIDERING_FIX_ICON}}" width="15"></td>
+                            <!-- <td><i>{{legendConsiderFixRe}}</i></td>  -->
+                            <td><i>{{'LEGEND_CONSIDER_FIX_EN'|i18n}}</i></td>
+                            <td><img src="{{SHOULD_FIX_ICON}}" width="15"></td>
+                            <!-- <td><i>{{legendShouldFixRe}}</i></td>  -->
+                            <td><i>{{'LEGEND_SHOULD_FIX_EN'|i18n}}</i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!--Report Section Seperator (Footer) -->
+            <div class="mspeed-footer-section">
+                <div class="mspeed-footer-section-icon">
+                    <img src="assets/img/png/googlelogo_white_color_120x48dp.png">
+                </div>
+                <div class="mspeed-footer-section-title">
+                    <!-- <h1>{{FooterMessage}}</h1>  -->
+                    <h1>{{'FOOTER_MESSAGE_EN'|i18n}}</h1>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's Javascript plugins') -->
+        <!-- It is from Google Hosted Libraries https://developers.google.com/speed/libraries/ -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!--BootStrap JS -->
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- AngularJS  -->
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+
+        <!--Angular Material Library -->
+        <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+
+        <!--Aplos -->
+        <script type="text/javascript" src="https://data.corp.google.com/aplos/versions/aplos-v1_2.js"></script>
+        <script src='https://login.corp.google.com/javascript_api.js'></script>
+
+        <!-- project javascript -->
+
+        <script type="text/javascript" src="js/service/localize.js"></script>  <!-- Localization -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/service/constVariables.js"></script>
+        <script type="text/javascript" src="js/service/constResource.js"></script>
+        <script type="text/javascript" src="js/service/dataService.js"></script>
+        <script type="text/javascript" src="js/controller/publishCtrl.js"></script>
+
+        <!-- Converting HTML to PDF  -->
+        <script type="text/javascript" src="bower_components/dom-to-image/dist/dom-to-image.min.js"></script>
+        <script type="text/javascript" src="bower_components/jspdf/dist/jspdf.min.js"></script>
+    </body>
+</html>
