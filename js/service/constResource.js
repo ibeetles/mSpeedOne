@@ -52,7 +52,7 @@
                     'PROGRESS_SUGGESTION_USER_INPUT_EN' : "If you can't find 'Validating user input data - Succeeded'. Please go back to the previous page and do user input again. Please keep this in mind that you should not block cookie in your broser.",
                     'PROGRESS_SUGGESTION_WPT_EN'        : "If you see 'Retrieving Web Page Test Index data - Failed', please refresh this page again as it could be temporary issue. Or Open new tab and hit moma/ so that you have right credential on your session",
                     'PROGRESS_SUGGESTION_API_EN'        : "If you see 'Calling Page Speed Insight API - Failed', please check if URL input you did in the previous page is correct URL by typing them in new tab and checking if the site is valid one.",
-                    'PROGRESS_SUGGESTION_CONTACT_EN'    : "Please contact to your gTech POC or mincheoulkim@google.com in continous error occurance.",
+                    'PROGRESS_SUGGESTION_CONTACT_EN'    : "Please contact to your gTech POC or uskay@google.com in continous error occurance.",
                     'PROGRESS_USER_INPUT_EN'            : 'Validating user input data - ',
                     'PROGRESS_WPT_EN'                   : 'Retrieving Web Page Test Index data - ',
                     'PROGRESS_API_EN'                   : 'Calling Page Speed Insight API - ',
